@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//table
+model User {
+  //columns
+  id         String   @id @default(uuid())
+  email      String   @unique
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  //save database in lowercase
+  @@map("users")
+}
+
+model Client {
+  id           String @id @default(uuid())
+  client_login String @unique
+  client_name  String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("client")
+}
+
+model Activation {
+  id      String @id @default(uuid())
+  station String
+  gpon    String
+  cto     String
+  port    String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("activation")
+}
