@@ -5,9 +5,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
+//database local sqlite
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+
+//database mysql/mariadb
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL_MYSQL")
 }
 
 //table
@@ -35,11 +42,9 @@ model Client {
 }
 
 model Activation {
-  id      String @id @default(uuid())
-  station String
-  gpon    String
-  cto     String
-  port    String
+  id    String @id @default(uuid())
+  login String @unique
+  plano String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
