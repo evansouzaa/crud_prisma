@@ -21,8 +21,11 @@ datasource db {
 model User {
   //columns
   id         String   @id @default(uuid())
+
   email      String   @unique
   name       String
+  password   String
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -32,6 +35,7 @@ model User {
 
 model Client {
   id           String @id @default(uuid())
+  
   client_login String @unique
   client_name  String
 

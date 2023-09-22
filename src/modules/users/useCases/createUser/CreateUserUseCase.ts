@@ -2,9 +2,10 @@ import { User } from "@prisma/client"
 import { prisma } from "../../../../prisma/client";
 import { CreateUserType } from "../../types/CreateUserTypes";
 import { AppError } from "../../../../erros/AppErros";
+import { exclude } from "../../types/type-safe";
 
 export class CreateUserUseCase {
-    async execute({ email, name }: CreateUserType): Promise<User> {
+    async execute({ email, name, password }: CreateUserType): Promise<User> {
         //check user exist
             const userAlreadyExists = await prisma.user.findUnique({
                 where: {
@@ -20,10 +21,15 @@ export class CreateUserUseCase {
             const user = await prisma.user.create({
                 data: {
                     name,
-                    email
+                    email,
+                    password
                 }
             });
 
-            return user
+            //remove password field
+            const userWithoutPassword = exclude(user, ["password"]);
+
+            //@ts-ignore comment disables all type checking for the next line
+            return userWithoutPassword
     }
 }
