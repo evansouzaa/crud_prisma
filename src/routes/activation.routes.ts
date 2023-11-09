@@ -1,10 +1,9 @@
 import { Router } from "express";
-import { StoreActivationController } from "../modules/users/useCases/storeActivation/StoreActivationController";
-
-const storeActivation = new StoreActivationController
+import ActivationController from "../api/controllers/ActivationController";
 
 const activationRoutes = Router()
 
-activationRoutes.post("/", storeActivation.handle)
+activationRoutes.get("/", ActivationController.index)
+activationRoutes.post("/", ActivationController.store)
 
 export { activationRoutes }

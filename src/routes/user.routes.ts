@@ -1,13 +1,10 @@
 import { Router } from "express";
-import { CreateUserController } from "../modules/users/useCases/createUser/CreateUserController";
-import { GetAllUserController } from "../modules/users/useCases/getAllUsers/GetAllUserController";
-
-const createUserController = new CreateUserController
-const getAllUserUseCase = new GetAllUserController
+import UserController from "../api/controllers/UserController";
+import AuthRequire from "../api/middleware/AuthRequire";
 
 const userRoutes = Router()
 
-userRoutes.get("/", getAllUserUseCase.handle)
-userRoutes.post("/", createUserController.handle)
+userRoutes.get("/", AuthRequire, UserController.index)
+userRoutes.post("/", UserController.store)
 
 export { userRoutes }
