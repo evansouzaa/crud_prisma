@@ -17,7 +17,7 @@ datasource db {
   url      = env("DATABASE_URL_MYSQL")
 }
 
-//table
+//tables
 model User {
   //columns
   id         String   @id @default(uuid())

@@ -3,6 +3,8 @@ import express, { NextFunction, Request, Response } from "express"
 import { routes } from "./routes"
 import { AppError } from "./api/error/AppErros"
 
+const port = process.env.APP_PORT
+
 const app = express()
 
 app.use(express.json())
@@ -24,6 +26,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     })
 })
 
-app.listen(3000, function(){
-    console.log("rodando porta 3000")
+app.listen(port, function () {
+    console.log(`running on port ${port}`)
 })
