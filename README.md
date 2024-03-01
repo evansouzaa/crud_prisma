@@ -44,6 +44,7 @@
 
 ### example .env
 
+<<<<<<< HEAD
 # Environment variables declared in this file are automatically made available to Prisma.
 # See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
 
@@ -58,3 +59,11 @@ S
 JWT_PASS="keyjwt"
 JWT_EXPIRE="7d"
 
+=======
+APP_PORT=3000
+
+DATABASE_URL_MYSQL="mysql://teste:teste@teste/database"
+
+JWT_PASS="keyjwt"
+JWT_EXPIRE="7d"
+>>>>>>> 468bbd3486da363eb934f04b14da1b3800b52ceb
