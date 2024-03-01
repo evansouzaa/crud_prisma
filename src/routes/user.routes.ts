@@ -4,7 +4,7 @@ import AuthRequire from "../api/middleware/AuthRequire";
 
 const userRoutes = Router()
 
-userRoutes.post("/", UserController.store)
+userRoutes.post("/create", UserController.store)
 
 userRoutes.get("/", AuthRequire, UserController.index)
 userRoutes.put("/", AuthRequire, UserController.update)

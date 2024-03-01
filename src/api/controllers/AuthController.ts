@@ -35,6 +35,8 @@ class AuthController {
 
             const token = generateUserToken(user.id)
 
+            console.log(user)
+
             return res.status(200).json({ token })
 
         }

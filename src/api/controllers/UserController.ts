@@ -7,6 +7,8 @@ class UserController {
 
         try {
 
+            console.log(req.body)
+
             const { name, email, password } = req.body
 
             //check user exist
@@ -47,6 +49,8 @@ class UserController {
         }
     }
     async index(req: Request, res: Response) {
+
+        console.log(req.body)
 
         const allUser = await prisma.user.findMany({
             select: {

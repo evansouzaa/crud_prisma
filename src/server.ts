@@ -1,5 +1,7 @@
+
 import "express-async-errors"
 import express, { NextFunction, Request, Response } from "express"
+import cors from "cors"
 import { routes } from "./routes"
 import { AppError } from "./api/error/AppErros"
 
@@ -7,7 +9,11 @@ const port = process.env.APP_PORT
 
 const app = express()
 
-app.use(express.json())
+const corsOptions = {
+    origin: "*"
+}
+
+app.use(express.json(), cors(corsOptions))
 
 app.use(routes)
 

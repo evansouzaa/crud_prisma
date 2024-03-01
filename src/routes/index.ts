@@ -7,7 +7,7 @@ const routes = Router()
 
 routes.use("/auth", authRoutes)
 
-routes.use("/users", userRoutes)
+routes.use("/user", userRoutes)
 
 routes.use("/activation", activationRoutes)
 
