@@ -2,17 +2,33 @@
 
 CRUD with Typescript and Prisma
 
-## Running on docker-compose
 
-``  git clone https://github.com/evansouzaa/crud_prisma.git
+
+### example .env
+create new file .env ./
+
+APP_PORT=3000
+
+DATABASE_URL_MYSQL="mysql://teste:teste@teste/database"
+
+JWT_PASS="keyjwt"
+
+JWT_EXPIRE="7d"
+
+### Running on docker-compose
+
+``  
+  git clone https://github.com/evansouzaa/crud_prisma.git
 
   cd crud_prisma
 
-  sudo docker-compose -up 
+  sudo nano .env (same .env above)
+
+  sudo docker-compose up --build
   
   http://localhost:3000/
   
-  ``
+``
 
   
 
@@ -92,25 +108,6 @@ src
 └───routes # Definição de rotas express
 
 └───types # Tipagem (d.ts) para Typescript
-
-  
-  
-
-### example .env
-
-  
-
-# Local database in folder /database/
-
-APP_PORT=3000
-
-  
-
-DATABASE_URL_MYSQL="mysql://teste:teste@teste/database"
-
-JWT_PASS="keyjwt"
-
-JWT_EXPIRE="7d"
 
   
 
