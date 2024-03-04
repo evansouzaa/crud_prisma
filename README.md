@@ -15,6 +15,8 @@ JWT_PASS="keyjwt"
 
 JWT_EXPIRE="7d"
 
+NGROK_TOKEN="yourtoken"
+
 ### Running on docker-compose
 
 ``  
@@ -30,50 +32,41 @@ JWT_EXPIRE="7d"
   
 ``
 
-  
+**NGROK**
 
+If you use ngrok, just add your token to `NGROK_TOKEN="yourtoken"`.
+
+If you don't use ngrok, don't worry. Remove the ngrok package and delete the IIFE function.
+
+*Note: Ngrok is a tool for creating secure tunnels to localhost. If you're not familiar with it, you may not need to worry about adding a token.*
+
+  
+## Commands Notes
 # start project
 
 npmr run dev
-
-  
 
 # start new project steps
 
 npm i prisma ts-node-dev typescript @types/express -D
 
-  
-
 npm i @prisma/client express
-
-  
 
 npx prisma init
 
-  
-
-## prisma commands
-
-  
+### prisma commands
 
 ## force reset db
 
 npx prisma db push --force-reset
 
-  
-
 ### migration
 
 npx prisma migrate dev
-
   
-  
-
 ### prisma studio
 
 npx prisma studio
-
-  
 
 ### folder structure
 
@@ -111,33 +104,23 @@ src
 
   
 
-### DOCUMENTAÇÃO
+### DOCUMENTAÇÃO (pt-BR)
 
 ## Autentica um usuário e gera um token de acesso.
 
-  
-
 ### Endpoint
-
-  
 
 -  **Método:**  `POST`
 
 -  **URL:**  `/auth`
 
-  
-
 ### Parâmetros de Requisição
-
-  
 
 -  **Corpo da Requisição (JSON):**
 
 -  `email` (string): O e-mail do usuário.
 
 -  `password` (string): A senha do usuário.
-
-  
 
 **Exemplo de Requisição:**
 
@@ -146,14 +129,9 @@ src
 	> "password":  "senha123" 
 > }
 
-
 ## Rota de Usuário
 
-  
-
 ### Criação de Usuário
-
-  
 
 Cria um novo usuário.
 
@@ -172,9 +150,7 @@ Cria um novo usuário.
 - `email` (string): E-mail do usuário.
 
 - `password` (string): Senha do usuário.
-
   
-
 #### Exemplo de Requisição:
 
 > json 
@@ -184,13 +160,11 @@ Cria um novo usuário.
 	> "password": "senha123"
 >  }
 
-  
 
 ### Listagem de Usuários
 
 Obtém a lista de todos os usuários.
 
-  
 
 Método: GET
 
@@ -242,24 +216,23 @@ URL: /user/
 
 Parâmetros de Requisição
 
-Corpo da Requisição (JSON):
+- **Corpo da Requisição (JSON):**
 
-name (string, opcional): Novo nome do usuário.
+- `name` (string, opcional): Novo nome do usuário.
 
-email (string, opcional): Novo e-mail do usuário.
+- `email` (string, opcional): Novo e-mail do usuário.
 
-password (string, opcional): Nova senha do usuário.
+- `password` (string, opcional): Nova senha do usuário.
 
 Exemplo de Requisição:
 
-  
 
-json
-{
-"name":  "Novo Nome",
-"email":  "novo_email@example.com",
-"password":  "nova_senha"
-}
+>json
+>{
+  >"name":  "Novo Nome",
+  >"email":  "novo_email@example.com",
+  >"password":  "nova_senha"
+>}
 
 Resposta Bem-Sucedida (HTTP 200 OK)
 Corpo da Resposta (JSON):

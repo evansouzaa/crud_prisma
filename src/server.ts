@@ -5,6 +5,21 @@ import cors from "cors"
 import { routes } from "./routes"
 import { AppError } from "./api/error/AppErros"
 
+//ngrok proxy reverse
+import ngrok from "@ngrok/ngrok";
+
+(async function () {
+    // Establish connectivity
+    const listener = await ngrok.forward(
+        {
+            addr: "localhost:3000",
+            authtoken: process.env.NGROK_TOKEN
+        });
+
+    // Output ngrok url to console
+    console.log(`Ingress established at: ${listener.url()}`);
+})();
+
 const port = process.env.APP_PORT
 
 const app = express()
@@ -32,6 +47,6 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     })
 })
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`running on port ${port}`)
 })

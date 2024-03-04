@@ -30,6 +30,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@ngrok/ngrok": "^1.1.0",
     "@prisma/client": "^5.2.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.16",
